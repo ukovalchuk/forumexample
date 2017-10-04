@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="userRoleDAO" class="com.example.dao.UserRoleDAO"/>
+    <!-- todo create DAO beans -->
+
+    <bean id="loginController" class="com.example.controller.LoginController">
+        <property name="userRoleDAO" ref="userRoleDAO"/>
+    </bean>
+    <bean id="commentDAO" class="com.example.dao.CommentDAO"/>
+    <bean id="topicDAO" class="com.example.dao.TopicDAO"/>
+    <bean id="userDAO" class="com.example.dao.UserDAO"/>
+    <bean id="registerController" class="com.example.controller.RegisterController">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+    <bean id="topicController" class="com.example.controller.TopicController">
+        <property name="topicDAO" ref="topicDAO"/>
+    </bean>
+
+    <bean id="adminController" class="com.example.controller.AdminController">
+        <property name="commentDAO" ref="commentDAO"/>
+        <property name="topicDAO" ref="topicDAO"/>
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+
+</beans>
+
